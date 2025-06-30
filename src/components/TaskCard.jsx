@@ -5,9 +5,12 @@ import "./TaskCardStyles.css";
 const TaskCard = ({ task, fetchAllTasks }) => {
   const handleCompleteTask = async () => {
     try {
-      await axios.patch(`http://localhost:8080/api/tasks/${task.id}`, {
-        completed: !task.completed,
-      });
+      await axios.patch(
+        `https://sequelize-intro-starting-point-nine.vercel.app/api/tasks/${task.id}`,
+        {
+          completed: !task.completed,
+        }
+      );
       fetchAllTasks();
     } catch (error) {
       console.error("Error completing task:", error);
@@ -16,7 +19,9 @@ const TaskCard = ({ task, fetchAllTasks }) => {
 
   const handleDeleteTask = async () => {
     try {
-      await axios.delete(`http://localhost:8080/api/tasks/${task.id}`);
+      await axios.delete(
+        `https://sequelize-intro-starting-point-nine.vercel.app/api/tasks/${task.id}`
+      );
       fetchAllTasks();
     } catch (error) {
       console.error("Error deleting task:", error);
